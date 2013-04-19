@@ -1,0 +1,29 @@
+<?php if($this->result) : ?>
+
+<?php 
+$page        = $this->result['data'];
+$title       = $page['title'];
+$keywords    = strtolower($page['keywords']);
+$description = preg_replace('/\[gist\]([0-9a-z]+)\[\/gist\]/', '', substr(strip_tags($page['content']), 0, 250));
+
+$this->headTitle($title);
+$this->headMeta()->appendName('keywords', $keywords);
+$this->headMeta()->appendName('description', $description);
+
+echo $this->render('simukti/_backdrop', array(
+    'main_title' => $title,
+)); ?>
+
+<div class="container main-content">
+    <div class="row">
+        <div class="span8 offset2">
+            <div class="post">
+                <div class="post-content">
+                    <?php echo $this->gistParser($page['content']); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>

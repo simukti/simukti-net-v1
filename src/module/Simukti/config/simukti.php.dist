@@ -1,0 +1,38 @@
+<?php
+return array(
+    'simukti-api-key' => array(
+        'server_url'    => '',
+        'client_key'    => '',
+        'client_secret' => ''
+    ),
+    'networks' => array(
+        'flickr' => array(
+            'username' => '',
+            'user_id'  => '',
+            'api_key'  => '',
+            'fetch_per_page' => ''
+        ),
+        'github' => array(
+            'username'      => '',
+            'client_id'     => '',
+            'client_secret' => '',
+        )
+    ),
+    'command' => array(
+        'cache_reset' => ''
+    ),
+    'disqus' => array(
+        'development'   => (PRODUCTION === true) ? false : true,
+        'shortname'     => ''
+    ),
+    'analytics' => array(
+        'development'   => (PRODUCTION === true) ? false : true,
+        'account'       => ''
+    ),
+    'head_meta' => array(
+        'google-site-verification'  => '',
+        'msvalidate.01'             => '',
+        'revisit-after'             => ''
+    ),
+    'icon-map' => array()
+);

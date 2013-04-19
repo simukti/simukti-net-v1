@@ -1,0 +1,19 @@
+# klasik, pastikan mod_rewrite on
+RewriteEngine On
+Options -MultiViews -Indexes
+ServerSignature Off
+RewriteBase /
+
+# auto www
+RewriteCond %{HTTP_HOST} !^www\.               [NC]
+RewriteCond %{HTTP_HOST} ^([^.]+\.[a-z]{2,6})$ [NC]
+RewriteRule ^(.*)$       http://www.%1/$1      [R=301,L]
+
+# klo ada "index.php", redirect permanen ke halaman depan
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s(.*)/index\.php [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# direct-request selain ke folder "assets" dan "publix", arahkan ke index.php
+RewriteCond %{REQUEST_URI} ^\/(assets|publix)\/.*$
+RewriteRule ^(.*)$ - [NC,L]
+RewriteRule ^(.*)$ index.php [NC,L]

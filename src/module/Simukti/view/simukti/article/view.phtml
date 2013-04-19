@@ -1,0 +1,62 @@
+<?php if($this->result) : ?>
+
+<?php 
+$data = $this->result['data']; 
+$date = new \DateTime($data['createdAt']);
+$formatedDate = $date->format('d M Y H:i O');
+$url = $this->url('article_view', array(
+            'year'  => $date->format('Y'),
+            'month' => $date->format('m'),
+            'day'   => $date->format('d'),
+            'slug'  => $data['slug']
+        ));
+$tags = array($data['keywords']);
+foreach($data['tags'] as $tag) {
+    $tags[] = strtolower($tag['name']);
+}
+$description = preg_replace('/\[gist\]([0-9a-z]+)\[\/gist\]/', '', substr(strip_tags($data['content']), 0, 250));
+
+$this->headTitle($data['title']);
+$this->headMeta()->appendName('keywords', implode(', ', $tags));
+$this->headMeta()->appendName('description', $description);
+
+$right_title = sprintf("By <a href=\"%s\">%s</a>, %s", $this->url('home'), $data['user']['fullname'], $formatedDate);
+
+echo $this->render('simukti/_backdrop', array(
+    'main_title' => 'Article / View',
+    'right_title' => $right_title
+)); ?>
+
+<div class="container main-content">
+    <div class="row">
+        <div class="span8 offset2">
+            <article>
+                <div class="post single-post">
+                    <div class="post-title">
+                        <h1><a href="<?php echo $this->serverUrl() . $url; ?>"><?php echo $data['title']; ?></a></h1>
+                    </div>
+                    <div class="post-meta hidden-desktop">
+                        <p><?php echo $right_title; ?></p>
+                    </div>
+                    <div class="post-content">
+                        <?php echo $this->gistParser($data['content']); ?>
+                        
+                        <p>
+                            <a href="<?php echo $this->url('article_shortcut', array('id' => $data['shortcut'])); ?>" 
+                               class="btn btn-success btn-mini"><i class="icon-share icon-white"></i> Article Shortcut
+                            </a>
+                        </p>
+                        
+                    </div>
+                    
+                    <?php echo $this->disqus($url, $url, $data['title']); ?>
+                </div>
+            </article>
+            
+            <?php echo $this->articleRecent(); ?>
+            
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>

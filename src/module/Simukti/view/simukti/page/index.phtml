@@ -1,0 +1,39 @@
+<?php 
+if($this->tags) {
+    $tags = array();
+    foreach($this->tags['data'] as $tag) {
+        $tags[] = strtolower($tag['name']);
+    }
+    $this->headMeta(implode(', ', $tags), 'keywords');
+}
+$msg = 'I\'m Sarjono Mukti Aji, and this is my official site (and playground). 
+        Respecting Open Source, Open Mind, and Meritocracy, 
+        this site (in Indonesian / English) is about my views, technical notes, and my fun things.';
+$this->headMeta($msg, 'description');
+?>
+
+<?php /** backdrop untuk halaman depan, beda dengan yang di halaman lainnya. */ ?>
+<div id="backdrop" class="backdrop">
+    <div class="container">
+        <div class="row">
+            <div class="span8 offset2">
+                <h1>Welcome to siMukti.Net</h1>
+                <p> <?php echo $msg; ?> </p>
+                <p class="connect">
+                    <a href="https://github.com/simukti" rel="me" class="github"></a>
+                    <a href="http://www.linkedin.com/in/simukti" rel="me" class="linkedin"></a>
+                    <a href="mailto:me@simukti.net" rel="me" class="email"></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container main-content front">
+    <div class="row">
+        <div class="span8 offset2">
+            <?php echo $this->articleRecent(); ?>
+            <?php echo $this->render('simukti/xhr/frontpage'); ?>
+        </div>
+    </div>
+</div>

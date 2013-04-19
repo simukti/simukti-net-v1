@@ -1,0 +1,36 @@
+
+<?php if (count($this->articles)) : ?>
+    <div class="recent-posts">
+        <h4><?php echo $this->title; ?></h4>
+        <table class="table table-condensed table-hover posts">
+            <tbody>
+                <?php foreach ($this->articles as $article): ?>
+                    <?php
+                    $date = new \DateTime($article['createdAt']);
+                    $formatedDate = $date->format('Y/m/d');
+                    $url = $this->url('article_view', array(
+                            'year'  => $date->format('Y'),
+                            'month' => $date->format('m'),
+                            'day'   => $date->format('d'),
+                            'slug'  => $article['slug']
+                        ));
+                    ?>
+                    <tr>
+                        <td class="posttitle"><a href="<?php echo $url; ?>"><?php echo $article['title']; ?></a></td>
+                        <td class="postdate hidden-phone hidden-tablet"><?php echo $formatedDate; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+                
+                <?php if(isset($this->show_archive_button) && $this->show_archive_button == false) : ?>
+                <?php else :?>
+                <tr>
+                    <td colspan="2" class="posttitle">
+                        <a class="pull-right btn btn-mini btn-info" href="<?php echo $this->url('article_archive');?>">Archive</a>
+                    </td>
+                </tr>
+                <?php endif; ?>
+                
+            </tbody>
+        </table>
+    </div>
+<?php endif; ?>

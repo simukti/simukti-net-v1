@@ -1,0 +1,23 @@
+<?php if($this->result) : ?>
+
+<?php 
+$title = sprintf("Article / Tag: %s", $this->tag);
+$this->headTitle($title); 
+?>
+
+<?php echo $this->render('simukti/_backdrop', array(
+    'main_title' => 'Article / Tag'
+)); ?>
+
+<div class="container main-content front">
+    <div class="row">
+        <div class="span8 offset2">
+            <?php echo $this->render('simukti/article/_list', array(
+                'title'     => $this->tag,
+                'articles'  => $this->result['data']
+            )); ?>
+        </div>
+    </div>
+</div>
+
+<?php endif; ?>

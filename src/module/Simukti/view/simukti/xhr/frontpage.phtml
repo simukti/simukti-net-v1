@@ -1,0 +1,27 @@
+<div id="github">
+    <h2>Github Repositories</h2>
+    <span id="github_loader">loading data...</span>
+    <table class="table table-condensed table-hover posts">
+        <tbody id="github_repos"></tbody>
+    </table>
+</div>
+
+<?php $this->inlineScript()->captureStart(); ?>
+$(document).ready(function() {
+    window.fadeIn_duration = 500;
+    $.ajax({
+        url         : '<?php echo $this->url('async-github');?>',
+        dataType    : 'json',
+        success     : function(data) {
+            $.each(data.__SIMUKTIDOTNET__, function(index, repo) {
+                var item = $('<tr><td><a class=\"btn btn-mini btn-success\" href=\"' 
+                              + repo.html_url + '\" target=\"_blank\">' + repo.name 
+                              + '<\/a><\/td><td class=\"posttitle\">' 
+                              + repo.description + '<\/a><\/td><\/tr>');
+                item.appendTo('#github_repos').hide().fadeIn(fadeIn_duration);
+            });
+            $('span#github_loader').remove().fadeOut(fadeIn_duration);
+        }
+    });
+});
+<?php $this->inlineScript()->captureEnd(); ?>
