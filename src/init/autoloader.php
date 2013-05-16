@@ -8,7 +8,7 @@ define('CACHE_PATH',  APPLICATION_PATH . DIRECTORY_SEPARATOR . 'data'
  * Tidak perlu include_path, karena ini ngambil absolut file ClassMapAutoloader, 
  * lalu memberitahukan dimana letak file yang akan di autoload via autoload_classmap.php
  */
-require_once GLOBAL_LIBRARY . DIRECTORY_SEPARATOR . 'zf21'
+require_once GLOBAL_LIBRARY . DIRECTORY_SEPARATOR . 'zf22'
                             . DIRECTORY_SEPARATOR . 'Zend' . DIRECTORY_SEPARATOR . 'Loader' 
                             . DIRECTORY_SEPARATOR . 'ClassMapAutoloader.php';
 
@@ -16,7 +16,7 @@ use Zend\Loader\ClassMapAutoloader;
 use Zend\Mvc\Application;
 
 $loader = new ClassMapAutoloader(array(
-    GLOBAL_LIBRARY   . DIRECTORY_SEPARATOR . 'zf21'
+    GLOBAL_LIBRARY   . DIRECTORY_SEPARATOR . 'zf22'
                      . DIRECTORY_SEPARATOR . 'autoload_classmap.php',
 	
     APPLICATION_PATH . DIRECTORY_SEPARATOR . 'sdk'
