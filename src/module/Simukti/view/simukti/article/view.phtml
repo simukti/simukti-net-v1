@@ -3,7 +3,8 @@
 <?php 
 $data = $this->result['data']; 
 $date = new \DateTime($data['createdAt']);
-$formatedDate = $date->format('d M Y H:i O');
+$tempDate = $date->format('Y/m/d H:i');
+$formatedDate = $tempDate . ' GMT' . substr($date->format('O'), 0, 3) . ':00';
 $url = $this->url('article_view', array(
             'year'  => $date->format('Y'),
             'month' => $date->format('m'),
