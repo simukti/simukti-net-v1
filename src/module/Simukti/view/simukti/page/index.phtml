@@ -12,28 +12,21 @@ $msg = 'I\'m Sarjono Mukti Aji, and this is my official site (and playground).
 $this->headMeta($msg, 'description');
 ?>
 
-<?php /** backdrop untuk halaman depan, beda dengan yang di halaman lainnya. */ ?>
-<div id="backdrop" class="backdrop">
-    <div class="container">
-        <div class="row">
-            <div class="span8 offset2">
-                <h1>Welcome to siMukti.Net</h1>
-                <p> <?php echo $msg; ?> </p>
-                <p class="connect">
-                    <a href="https://github.com/simukti" rel="me" class="github"></a>
-                    <a href="http://www.linkedin.com/in/simukti" rel="me" class="linkedin"></a>
-                    <a href="mailto:me@simukti.net" rel="me" class="email"></a>
-                </p>
-            </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="intro">
+            <p> <?php echo $msg; ?> </p>
+            <p class="social">
+                <a href="https://github.com/simukti" class="link-github" title="github.com/simukti" rel="follow"><i class="icon-github-sign"></i></a>
+                <a href="https://twitter.com/simukti" class="link-twitter" title="twitter.com/simukti" rel="follow"><i class="icon-twitter-sign"></i></a>
+                <a href="https://www.linkedin.com/in/simukti" class="link-linkedin" title="linkedin.com/in/simukti" rel="follow"><i class="icon-linkedin-sign"></i></a>
+                <a href="mailto:me@simukti.net" class="link-email" title="me@simukti.net"><i class="icon-envelope"></i></a>
+            </p>
         </div>
     </div>
 </div>
 
-<div class="container main-content front">
-    <div class="row">
-        <div class="span8 offset2">
-            <?php echo $this->articleRecent(); ?>
-            <?php echo $this->render('simukti/xhr/frontpage'); ?>
-        </div>
-    </div>
+<div class="content">
+    <?php echo $this->articleRecent(); ?>
+    <?php echo $this->render('simukti/xhr/frontpage'); ?>
 </div>

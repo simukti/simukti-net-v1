@@ -1,0 +1,9 @@
+<?php $pages = $this->pages()->getPages(); ?>
+<?php foreach($pages['data'] as $key) : ?>
+    <?php if($key['slug'] == 'internal') : ?>
+    
+        <?php foreach($key['pages'] as $internal) : ?>
+            <i class="icon-double-angle-left"></i><a href="<?php echo $this->url($internal['slug']); ?>" rel="follow"> <?php echo $internal['title']; ?> </a><i class="icon-double-angle-right"></i>
+        <?php endforeach;?>
+    <?php endif; ?>
+<?php endforeach;?>

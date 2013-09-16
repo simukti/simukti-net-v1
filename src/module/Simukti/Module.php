@@ -53,6 +53,12 @@ class Module
                     $options = $config['simukti']['disqus'];
                     return new Helper\Disqus($options);
                 },
+                'livefyre' => function ($services) {
+                    $sm     = $services->getServiceLocator();
+                    $config = $sm->get('config');
+                    $options = $config['simukti']['livefyre'];
+                    return new Helper\Livefyre($options);
+                },
                 'google-analytics' => function ($services) {
                     $sm     = $services->getServiceLocator();
                     $config = $sm->get('config');

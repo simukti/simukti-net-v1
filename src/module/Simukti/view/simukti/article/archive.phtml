@@ -4,35 +4,39 @@
 $title = 'Article / Archive';
 $this->headTitle($title); 
 ?>
-<?php echo $this->render('simukti/_backdrop', array(
-    'main_title' => $title
-)); ?>
 
-<div class="container main-content front">
-    <div class="row">
-        <div class="span8 offset2">
-            
-            <?php foreach($this->result['data'] as $archive) : ?>
-                <?php echo $this->render('simukti/article/_list', array(
-                    'title'     => $archive['year'],
-                    'articles'  => $archive['articles'],
-                    'show_archive_button' => false
-                )); ?>
-            <?php endforeach; ?>
-            
-            <div class="recent-posts">
-                <h4>Tags</h4>
-                <p>
-                    <?php foreach($this->tags['data'] as $tag) : ?>
-                        <a class="btn btn-small btn-success article_tag" href="<?php echo $this->url('article_tag', array(
-                            'slug' => $tag['slug']
-                            ));?>"> <i class="icon-tags icon-white"></i> <?php echo sprintf("%s (%s)", $tag['name'], $tag['articleCount']); ?> 
-                        </a>
-                    <?php endforeach;?>
-                </p>
-            </div>
-        </div>
-        
+<div class="content single-view">
+    <div class="single-view-header">
+        <h1 id="content-title">
+            <?php echo $title; ?>
+        </h1>
+    </div>
+    <div class="list-div">
+        <?php foreach($this->result['data'] as $archive) : ?>
+            <?php echo $this->render('simukti/article/_list', array(
+                'title'     => $archive['year'],
+                'articles'  => $archive['articles'],
+                'show_archive_button' => false,
+                'icon'      => 'icon-calendar'
+            )); ?>
+        <?php endforeach; ?>
+    
+    <div class="single-view-header">
+        <h1 id="content-title">
+            Article / Tag
+        </h1>
+    </div>
+    <div class="list-div">
+        <h2><i class="icon-tags"></i> Tags</h2>
+        <p>
+            <?php foreach($this->tags['data'] as $tag) : ?>
+                <a class="btn btn-sm btn-info" href="<?php echo $this->url('article_tag', array(
+                    'slug' => $tag['slug']
+                    ));?>" rel="follow"> <i class="icon-tags"></i> <?php echo sprintf("%s (%s)", $tag['name'], $tag['articleCount']); ?> 
+                </a>
+            <?php endforeach;?>
+        </p>
+    </div>
     </div>
 </div>
 

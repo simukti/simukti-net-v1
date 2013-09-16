@@ -1,8 +1,8 @@
-
 <?php if (count($this->articles)) : ?>
-    <div class="recent-posts">
-        <h4><?php echo $this->title; ?></h4>
-        <table class="table table-condensed table-hover posts">
+
+    <div class="list-div">
+        <h2><i class="<?php echo $this->icon; ?>"></i> <?php echo $this->title; ?></h2>
+        <table class="table table-condensed table-hover list-table">
             <tbody>
                 <?php foreach ($this->articles as $article): ?>
                     <?php
@@ -16,21 +16,21 @@
                         ));
                     ?>
                     <tr>
-                        <td class="posttitle"><a href="<?php echo $url; ?>"><?php echo $article['title']; ?></a></td>
-                        <td class="postdate hidden-phone hidden-tablet"><?php echo $formatedDate; ?></td>
+                        <td class="list-title"><a href="<?php echo $url; ?>" rel="follow"><?php echo $article['title']; ?></a></td>
+                        <td class="list-note hidden-xs"><?php echo $formatedDate; ?></td>
                     </tr>
                 <?php endforeach; ?>
                 
                 <?php if(isset($this->show_archive_button) && $this->show_archive_button == false) : ?>
                 <?php else :?>
                 <tr>
-                    <td colspan="2" class="posttitle">
-                        <a class="pull-right btn btn-mini btn-info" href="<?php echo $this->url('article_archive');?>">Archive</a>
+                    <td class="list-note" colspan="2">
+                        <a class="pull-right btn btn-sm btn-info" href="<?php echo $this->url('article_archive');?>" rel="follow">Archive <i class="icon-arrow-right"></i></a>
                     </td>
                 </tr>
                 <?php endif; ?>
-                
             </tbody>
         </table>
     </div>
+    
 <?php endif; ?>

@@ -25,6 +25,11 @@ return array(
         'development'   => (PRODUCTION === true) ? false : true,
         'shortname'     => ''
     ),
+    'livefyre' => array(
+        'development'   => (PRODUCTION === true) ? false : true,
+        'siteId'        => '',
+        'js'            => '//zor.livefyre.com/wjs/v3.0/javascripts/livefyre.js'
+    ),
     'analytics' => array(
         'development'   => (PRODUCTION === true) ? false : true,
         'account'       => ''

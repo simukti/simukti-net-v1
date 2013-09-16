@@ -1,7 +1,7 @@
 <div id="github">
-    <h2>Github Repositories</h2>
+    <h2><i class="icon-github-sign"></i> Github Repositories</h2>
     <span id="github_loader">loading data...</span>
-    <table class="table table-condensed table-hover posts">
+    <table class="table table-condensed table-hover list-table">
         <tbody id="github_repos"></tbody>
     </table>
 </div>
@@ -14,9 +14,9 @@ $(document).ready(function() {
         dataType    : 'json',
         success     : function(data) {
             $.each(data.__SIMUKTIDOTNET__, function(index, repo) {
-                var item = $('<tr><td><a class=\"btn btn-mini btn-success\" href=\"' 
+                var item = $('<tr><td class=\"list-title\"><a class=\"btn btn-xs btn-info\" href=\"' 
                               + repo.html_url + '\" target=\"_blank\">' + repo.name 
-                              + '<\/a><\/td><td class=\"posttitle\">' 
+                              + '<\/a><\/td><td>' 
                               + repo.description + '<\/a><\/td><\/tr>');
                 item.appendTo('#github_repos').hide().fadeIn(fadeIn_duration);
             });

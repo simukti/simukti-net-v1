@@ -49,7 +49,8 @@ class ArticleRecent extends AbstractHelper
         if(! $articles) return;
         return $this->view->render($this->templateName, array(
             'title'     => 'Recent Articles',
-            'articles'  => $articles['data']
+            'articles'  => $articles['data'],
+            'icon'      => 'icon-reorder'
         ));
     }
 }

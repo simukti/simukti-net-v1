@@ -1,78 +1,83 @@
-<?php echo $this->doctype(); ?>
+<?php echo $this->docType() . "\n"; ?>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php 
-             $this->headTitle('Sarjono Mukti Aji')->setDefaultAttachOrder('APPEND')->setSeparator(' - ')->setAutoEscape(true);
-             $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
-             $this->headMeta()->prependName('keywords', 'sarjono mukti aji, simukti');
-             $this->headLink(array('rel'  => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 
-                                   'href' => $this->basePath() . '/assets/img/favicon.ico'));
-             $this->headLink()->prependStylesheet($this->basePath() . '/assets/css/simukti-network.css??201307061017'); 
-             
-             echo $this->headTitle();
-             echo $this->headMeta();
-             echo $this->headLink();
-             echo $this->googleAnalytics();
-        ?>
-    </head>
-    <body class="simukti">
-        <header>
-            <div class="navbar navbar-static-top navbar-inverse">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <div class="row">
-                            <div class="span8 offset2">
-                                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" style="margin: 0 10px 0 0;"> <span class="icon-plus icon-white"></span> </a>
-                                <a href="<?php echo $this->url('home') ?>" class="brand">siMukti.Net</a>
-                                <div id="main-menu" class="nav-collapse">
-                                    <ul id="main-menu-right" class="nav pull-right">
-                                        
-                                        <?php $pageData = $this->pages()->getPages(); ?>
-                                        <?php $iconMaps = $this->pages()->getIconMaps(); ?>
-                                        <?php foreach($pageData['data'] as $pageCategory) : ?>
-                                            <?php echo $this->partial('layout/_navigation', array(
-                                                'pageCategory' => $pageCategory,
-                                                'iconMaps' => $iconMaps
-                                            )); ?>
-                                        <?php  endforeach; ?>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <section>
-            <?php echo $this->content; ?>
-        </section>
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="span8 offset2">
-                        <div class="footer">
-                            <p>
-                                <?php $current = date('Y'); $year = ($current == 2009) ? $current : sprintf("2009 - %s", $current); ?>
-                                Copyright &copy; <?php echo  $year; ?> &middot; <a href="<?php echo $this->url('home'); ?>">Sarjono Mukti Aji</a>. 
-                                Powered by <a href="http://framework.zend.com/" target="_blank">ZendFramework v<?php echo \Zend\Version\Version::VERSION; ?></a>. 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+  <head>
+    <meta charset="utf-8">
     <?php
-        if(PRODUCTION && ($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME)) {
-            $this->headScript()->prependFile('//code.jquery.com/jquery-1.8.0.min.js');
-        } else {
-            $this->headScript()->prependFile('/assets/js/jquery.js');
-        }
-        $this->headScript()->appendFile($this->basePath() . '/assets/js/simukti-network.js');
+        $this->headTitle('Sarjono Mukti Aji')->setDefaultAttachOrder('APPEND')->setSeparator(' - ')->setAutoEscape(true);
+        $this->headMeta()->appendName('author', 'Sarjono Mukti Aji');
+        $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+        $this->headMeta()->prependName('keywords', 'sarjono mukti aji, simukti');
+        $this->headLink(array('rel'  => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 
+                              'href' => $this->basePath() . '/assets/img/favicon.ico'));
         
+        if($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME) {
+            $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css'); 
+            $this->headLink()->appendStylesheet('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'); 
+        } else {
+            $this->headLink()->prependStylesheet($this->basePath() . '/assets/css/bootstrap.css'); 
+            $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/font-awesome.min.css'); 
+        }
+        
+        $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/app.css'); 
+        $this->headStyle()->appendStyle($this->basePath() . '/assets/css/font-awesome-ie7.min.css', array('conditional' => 'lt IE 7'));
+        
+        echo $this->headTitle();
+        echo $this->headMeta();
+        echo $this->headLink();
+        echo $this->headStyle();
+        echo $this->googleAnalytics();
+    ?>
+  </head>
+
+  <body>
+    <div id="top-var"></div>
+    
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-12 col-xs-12">
+        
+        <div class="page-header">
+            <h1><a href="<?php echo $this->url('home'); ?>">Sarjono Mukti Aji</a></h1>
+            <p class="lead">
+            views &middot; technical notes &middot; playground
+            </p>
+        </div>
+        
+        <?php echo $this->content; ?>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer">
+                    <p class="copyright">
+                        <?php $current = date('Y'); $year = ($current == 2009) ? $current : sprintf("2009 - %s", $current); ?>
+                            Copyright &copy; <?php echo  $year; ?> &middot; <a href="<?php echo $this->url('home'); ?>">Sarjono Mukti Aji</a>. 
+                            Powered by <a href="http://framework.zend.com/" target="_blank">ZendFramework v<?php echo \Zend\Version\Version::VERSION; ?></a>.
+                        <br />
+                        <?php echo $this->render('layout/_internal_pages'); ?>
+                    </p>
+                </div>
+            </div>
+        </div> 
+       </div>
+    </div>
+    </div>
+    
+    <?php
+        if($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME) {
+            $this->headScript()->prependFile('//code.jquery.com/jquery-1.10.2.min.js');
+            $this->headScript()->appendFile('//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js');
+        } else {
+            $this->headScript()->prependFile($this->basePath() .'/assets/js/jquery.js');
+            $this->headScript()->appendFile($this->basePath() . '/assets/js/bootstrap.min.js');
+        }
+        
+        $this->headScript()->appendFile($this->basePath() . '/assets/js/app.js');
+        $this->headScript()->appendFile($this->basePath() . '/assets/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9'))
+                           ->appendFile($this->basePath() . '/assets/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9'));
+                           
         echo $this->headScript(); 
         echo $this->inlineScript();
     ?>
-    </body>
+</body>
+
 </html>

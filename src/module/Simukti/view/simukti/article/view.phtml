@@ -21,42 +21,29 @@ $this->headTitle($data['title']);
 $this->headMeta()->appendName('keywords', implode(', ', $tags));
 $this->headMeta()->appendName('description', $description);
 
-$right_title = sprintf("By <a href=\"%s\">%s</a>, %s", $this->url('home'), $data['user']['fullname'], $formatedDate);
+//$right_title = sprintf("By <a href=\"%s\">%s</a>, %s", $this->url('home'), $data['user']['fullname'], $formatedDate);
+?>
 
-echo $this->render('simukti/_backdrop', array(
-    'main_title' => 'Article / View',
-    'right_title' => $right_title
-)); ?>
-
-<div class="container main-content">
-    <div class="row">
-        <div class="span8 offset2">
-            <article>
-                <div class="post single-post">
-                    <div class="post-title">
-                        <h1><a href="<?php echo $this->serverUrl() . $url; ?>"><?php echo $data['title']; ?></a></h1>
-                    </div>
-                    <div class="post-meta hidden-desktop">
-                        <p><?php echo $right_title; ?></p>
-                    </div>
-                    <div class="post-content">
-                        <?php echo $this->gistParser($data['content']); ?>
-                        
-                        <p>
-                            <a href="<?php echo $this->url('article_shortcut', array('id' => $data['shortcut'])); ?>" 
-                               class="btn btn-success btn-mini"><i class="icon-share icon-white"></i> Article Shortcut
-                            </a>
-                        </p>
-                        
-                    </div>
-                    
-                    <?php echo $this->disqus($url, $url, $data['title']); ?>
-                </div>
-            </article>
-            
-            <?php echo $this->articleRecent(); ?>
-            
-        </div>
+<div class="content single-view">
+    <div class="single-view-header">
+        <h1 id="content-title">
+            <a href="<?php echo $this->serverUrl() . $url; ?>"> <?php echo $data['title']; ?> </a>
+        </h1>
+        <p> <?php echo $formatedDate; ?> </p>
+    </div>
+    
+    <div class="single-view-content">
+        <?php echo $this->gistParser($data['content']); ?>
+        <p>
+            <a href="<?php echo $this->url('article_shortcut', array('id' => $data['shortcut'])); ?>" 
+               class="btn btn-info btn-sm"><i class="icon-share"></i> Article Shortcut
+            </a>
+        </p>
+    </div>
+    
+    <div class="single-view-footer">
+        <?php echo $this->livefyre($url, $data['title']); ?>
+        <?php echo $this->articleRecent(); ?>
     </div>
 </div>
 

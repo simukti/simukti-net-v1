@@ -30,5 +30,6 @@ return array(
     'Simukti\View\Helper\Flickr'          => __DIR__ . '/src/Simukti/View/Helper/Flickr.php',
     'Simukti\View\Helper\GistParser'      => __DIR__ . '/src/Simukti/View/Helper/GistParser.php',
     'Simukti\View\Helper\GoogleAnalytics' => __DIR__ . '/src/Simukti/View/Helper/GoogleAnalytics.php',
+    'Simukti\View\Helper\Livefyre'        => __DIR__ . '/src/Simukti/View/Helper/Livefyre.php',
     'Simukti\View\Helper\Pages'           => __DIR__ . '/src/Simukti/View/Helper/Pages.php',
 );
