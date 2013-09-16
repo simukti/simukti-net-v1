@@ -42,7 +42,7 @@ return array(
     'article_view' => array(
         'type' => 'Regex',
         'options' => array(
-            'regex'    => '/blog/(?<year>20[0-9]{2})/(?<month>[1-9]|0[1-9]|1[012])/(?<day>[1-9]|0[1-9]|[12][0-9]|3[01])/(?<slug>[a-zA-Z0-9\-_]+)(/|)',
+            'regex'    => '/blog/(?<year>20[0-9]{2})/(?<month>[1-9]|0[1-9]|1[012])/(?<day>[1-9]|0[1-9]|[12][0-9]|3[01])/(?<slug>[a-zA-Z0-9\-_]+)(/| )',
             'spec'     => '/blog/%year%/%month%/%day%/%slug%/',
             'defaults' => array(
                 'controller' => 'Simukti\Controller\Article',
