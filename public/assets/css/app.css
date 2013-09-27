@@ -2,21 +2,8 @@
     margin-bottom: 60px;
 }
 
-body {
-    font-family: 'PT Sans','Segoe UI',Calibri,Tahoma,Geneva,Verdana,sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 2em;
-    background-color: #f9f9f9;
-    color: #666;
-}
-
 p {
     text-align:justify;
-}
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, b, strong {
-    font-family: 'PT Sans','Segoe UI',Calibri,Tahoma,Geneva,Verdana,sans-serif;
-    font-weight: 700;
 }
 
 #top-var {
@@ -152,7 +139,9 @@ ol.reference {
 .single-view .single-view-content p {
     text-align: justify;
     word-wrap: break-word;
+    margin-bottom: 20px;
 }
+
 .single-view .single-view-content p img {
     background-color: #f0f0f0;
     border: 1px solid #ddd;
@@ -243,17 +232,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     background-color: #2C3E50;
 }
 
-.fyre .fyre-comment-article, 
-.fyre .fyre-comment-stream,
-.fyre-comment p,
-.fyre a.fyre-comment-username,
-.fyre .fyre-stream-stats, .fyre .fyre-stream-livecount,
-.goog-toolbar {
-    font-family: 'PT Sans','Segoe UI',Calibri,Tahoma,Geneva,Verdana,sans-serif;
-    font-size: 13px;
-    font-weight: normal;
-    line-height: 1.8em;
-}
 .fyre .fyre-comment-footer {
     margin-top: 5px;
     padding-top: 0;
@@ -272,6 +250,35 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     visibility: hidden !important;
 }
 
+body, html {
+    background-color: #fafafa;
+}
+
+/* TYPO */
+body {
+    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2em;
+    color: #555;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, b, strong {
+    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
+    font-weight: 700;
+}
+
+.fyre .fyre-comment-article, 
+.fyre .fyre-comment-stream,
+.fyre-comment p,
+.fyre a.fyre-comment-username,
+.fyre .fyre-stream-stats, .fyre .fyre-stream-livecount,
+.goog-toolbar {
+    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.8em;
+}
 
 /**************************************************/
 .gist .gist-file,.gist .gist-file .gist-data pre,.file-data pre,.line-data{font-family:"Droid Sans Mono","Lucida Sans Typewriter",Consolas,Monaco,"Bitstream Vera Sans Mono",monospace!important;}
