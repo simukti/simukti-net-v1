@@ -284,76 +284,76 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, b, strong {
 .gist .gist-file,.gist .gist-file .gist-data pre,.file-data pre,.line-data{font-family:"Droid Sans Mono","Lucida Sans Typewriter",Consolas,Monaco,"Bitstream Vera Sans Mono",monospace!important;}
 .file-data .line-numbers,.file-data .line-numbers span{display:none;visibility:hidden;}
 .file-box .file-data pre{margin:0;padding:0;}
-.file-data pre,.line-data{font-size:11px;line-height:1.5;width:100%;color:#eee;}
+.file-data pre,.line-data{font-size:12px;line-height:1.5;width:100%;color:#444;}
 .gist div{padding:0;margin:0;}
 .gist .gist-file{border:none;margin-bottom:1em;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;}
 .gist .gist-file .gist-meta{overflow:hidden;font-size:85%;padding:2px 4px;color:#666;background-color:#eaeaea;}
 .gist .gist-file .gist-meta a{color:#369;}
 .gist .gist-file .gist-meta a:visited{color:#737;}
-.gist .gist-file .gist-data{background-color:#222;border:medium none!important;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;color:#ccc;font-size:100%;overflow:auto;}
+.gist .gist-file .gist-data{background-color:#f6f6f6;border:1px solid #eee !important;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;-o-border-radius:5px;color:#444;font-size:100%;overflow:auto;}
 .gist .gist-file .gist-data pre{background:transparent!important;margin:0!important;border:0!important;padding:.25em .5em .5em!important;}
 .gist .gist-file .gist-data .gist-highlight{background:transparent!important;}
 .gist .gist-file .gist-data .gist-line-numbers{background-color:#ececec;color:#aaa;border-right:1px solid #ddd;text-align:right;}
 .gist .gist-file .gist-data .gist-line-numbers span{clear:right;display:block;}
 .gist-syntax{background:transparent;}
-.gist-syntax .p{color:#f5f5f5!important;}
-.gist-syntax .c{color:#777;}
+.gist-syntax .p{color:#444!important;}
+.gist-syntax .c{color:#bbb;}
 .gist-syntax .err{color:#a61717;background-color:#e3d2d2;}
-.gist-syntax .k{color:#F8BB00!important;}
-.gist-syntax .o{color:#f5f5f5!important;}
-.gist-syntax .cm{color:#777;}
-.gist-syntax .cp{color:#f5f5f5!important;}
-.gist-syntax .c1{color:#777;}
-.gist-syntax .cs{color:#777;}
-.gist-syntax .gd{color:#F8BB00!important;background-color:#fdd;}
-.gist-syntax .gd .x{color:#F8BB00!important;background-color:#faa;}
-.gist-syntax .ge{color:#F8BB00!important;}
-.gist-syntax .gr{color:#f5f5f5;}
+.gist-syntax .k{color:#444!important; font-weight: bold;} /*357EBD*/
+.gist-syntax .o{color:#444!important;}
+.gist-syntax .cm{color:#bbb;}
+.gist-syntax .cp{color:#444!important;}
+.gist-syntax .c1{color:#bbb;}
+.gist-syntax .cs{color:#bbb;}
+.gist-syntax .gd{color:#357EBD!important;background-color:#fdd;}
+.gist-syntax .gd .x{color:#357EBD!important;background-color:#faa;}
+.gist-syntax .ge{color:#357EBD!important;}
+.gist-syntax .gr{color:#444;}
 .gist-syntax .gh{color:#999;}
-.gist-syntax .gi{color:#F8BB00!important;background-color:#dfd;}
-.gist-syntax .gi .x{color:#F8BB00!important;background-color:#afa;}
+.gist-syntax .gi{color:#357EBD!important;background-color:#dfd;}
+.gist-syntax .gi .x{color:#357EBD!important;background-color:#afa;}
 .gist-syntax .go{color:#888;}
-.gist-syntax .gp{color:#555;}
+.gist-syntax .gp{color:#444;}
 .gist-syntax .gu{color:#aaa;}
-.gist-syntax .gt{color:#f5f5f5;}
-.gist-syntax .kc{color:#F8BB00!important;}
-.gist-syntax .kd{color:#F8BB00!important;}
-.gist-syntax .kp{color:#F8BB00!important;}
-.gist-syntax .kr{color:#F8BB00!important;}
+.gist-syntax .gt{color:#444;}
+.gist-syntax .kc{color:#357EBD!important;}
+.gist-syntax .kd{color:#357EBD!important;}
+.gist-syntax .kp{color:#357EBD!important;}
+.gist-syntax .kr{color:#357EBD!important;}
 .gist-syntax .kt{color:#458;}
-.gist-syntax .m{color:#eddd3d;}
-.gist-syntax .s{color:#00de00!important;}
-.gist-syntax .na{color:#f5f5f5!important;}
-.gist-syntax .nb{color:#f5f5f5!important;}
-.gist-syntax .nc{color:#5F91DB!important;}
+.gist-syntax .m{color:#B94100;}
+.gist-syntax .s{color:#00A000!important;}
+.gist-syntax .na{color:#444!important;}
+.gist-syntax .nb{color:#444!important;}
+.gist-syntax .nc{color:#5F91DB!important; font-weight: bold;}
 .gist-syntax .no{color:#5F91DB!important;}
 .gist-syntax .ni{color:purple;}
 .gist-syntax .ne{color:#5F91DB!important;}
-.gist-syntax .nf{color:#E27BE2!important;}
-.gist-syntax .nn{color:#555;}
+.gist-syntax .nf{color:#990000!important; font-weight: bold;}
+.gist-syntax .nn{color:#444;}
 .gist-syntax .nt{color:#95C4ED!important;}
-.gist-syntax .nv{color:#0ff!important;}
-.gist-syntax .nx{color:#f5f5f5!important;}
-.gist-syntax .ow{color:#f5f5f5!important;}
+.gist-syntax .nv{color:#008080!important;}
+.gist-syntax .nx{color:#444!important;}
+.gist-syntax .ow{color:#444!important;}
 .gist-syntax .w{color:#bbb;}
-.gist-syntax .mf{color:#eddd3d;}
-.gist-syntax .mh{color:#eddd3d;}
-.gist-syntax .mi{color:#eddd3d;}
-.gist-syntax .mo{color:#eddd3d;}
-.gist-syntax .sb{color:#00de00!important;}
-.gist-syntax .sc{color:#00de00!important;}
-.gist-syntax .sd{color:#888!important;}
-.gist-syntax .s2{color:#00de00!important;}
-.gist-syntax .se{color:#00de00!important;}
-.gist-syntax .sh{color:#00de00!important;}
-.gist-syntax .si{color:#00de00!important;}
-.gist-syntax .sx{color:#00de00!important;}
+.gist-syntax .mf{color:#B94100;}
+.gist-syntax .mh{color:#B94100;}
+.gist-syntax .mi{color:#B94100;}
+.gist-syntax .mo{color:#B94100;}
+.gist-syntax .sb{color:#00A000!important;}
+.gist-syntax .sc{color:#00A000!important;}
+.gist-syntax .sd{color:#bbb!important;}
+.gist-syntax .s1{color:#DD1144!important;}
+.gist-syntax .s2{color:#DD1144!important;}
+.gist-syntax .se{color:#00A000!important;}
+.gist-syntax .sh{color:#00A000!important;}
+.gist-syntax .si{color:#00A000!important;}
+.gist-syntax .sx{color:#00A000!important;}
 .gist-syntax .sr{color:#009926;}
-.gist-syntax .s1{color:#00de00!important;}
 .gist-syntax .ss{color:#990073;}
-.gist-syntax .bp{color:#999;}
+.gist-syntax .bp{color:#bbb;}
 .gist-syntax .vc{color:#5F91DB!important;}
 .gist-syntax .vg{color:#5F91DB!important;}
 .gist-syntax .vi{color:#5F91DB!important;}
-.gist-syntax .il{color:#eddd3d;}
-.gist-syntax span.n{color:#e0e0e0!important;}
+.gist-syntax .il{color:#B94100;}
+.gist-syntax span.n{color:#444!important;}
