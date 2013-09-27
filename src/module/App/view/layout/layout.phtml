@@ -11,15 +11,16 @@
                               'href' => $this->basePath() . '/assets/img/favicon.ico'));
         
         if($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME) {
-            $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css'); 
-            $this->headLink()->appendStylesheet('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'); 
+            $this->headLink()->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css'); 
+            $this->headLink()->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css'); 
         } else {
             $this->headLink()->prependStylesheet($this->basePath() . '/assets/css/bootstrap.css'); 
             $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/font-awesome.min.css'); 
         }
         
+        $this->headStyle()->appendStyle('//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome-ie7.min.css', array('conditional' => 'lt IE 7'));
+        
         $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/app.css'); 
-        $this->headStyle()->appendStyle($this->basePath() . '/assets/css/font-awesome-ie7.min.css', array('conditional' => 'lt IE 7'));
         
         echo $this->headTitle();
         echo $this->headMeta();
