@@ -9,6 +9,10 @@ $description = preg_replace('/\[gist\]([0-9a-z]+)\[\/gist\]/', '', substr(strip_
 $this->headTitle($title);
 $this->headMeta()->appendName('keywords', $keywords);
 $this->headMeta()->appendName('description', $description);
+$this->headLink(array(
+    'rel' => 'canonical',
+    'href' => $this->url(null, array(), array('force_canonical' => true))
+));
 ?>
 
 <div class="content single-view">

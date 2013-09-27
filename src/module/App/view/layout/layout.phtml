@@ -7,6 +7,7 @@
         $this->headMeta()->appendName('author', 'Sarjono Mukti Aji');
         $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
         $this->headMeta()->prependName('keywords', 'sarjono mukti aji, simukti');
+        $this->headMeta()->appendName('robots', 'all');
         $this->headLink(array('rel'  => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 
                               'href' => $this->basePath() . '/assets/img/favicon.ico'));
         
@@ -22,10 +23,17 @@
         
         $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/app.css?v=201309271405'); 
         
+        $this->headLink(array(
+            'rel'  => 'alternate',
+            'type' => 'application/rss+xml',
+            'title' => 'Sarjono Mukti Aji\'s Article Feeds',
+            'href' => $this->url('misc-rss', array(), array('force_canonical' => true))
+        ));
+        
         echo $this->headTitle();
         echo $this->headMeta();
-        echo $this->headLink();
         echo $this->headStyle();
+        echo $this->headLink();
         echo $this->googleAnalytics();
     ?>
   </head>
