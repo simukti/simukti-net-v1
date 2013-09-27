@@ -10,7 +10,7 @@ $this->headTitle($title);
         'title'     => $this->tag,
         'articles'  => $this->result['data'],
         'icon'      => 'icon-tags'
-    )); ?>
+    ), array('force_canonical' => true)); ?>
 </div>
 
 <?php endif; ?>

@@ -10,7 +10,11 @@ $url = $this->url('article_view', array(
             'month' => $date->format('m'),
             'day'   => $date->format('d'),
             'slug'  => $data['slug']
-        ));
+        ), array('force_canonical' => true));
+$shortUrl = $this->url('article_shortcut', array(
+    'id' => $data['shortcut']
+), array('force_canonical' => true));
+
 $tags = array($data['keywords']);
 foreach($data['tags'] as $tag) {
     $tags[] = strtolower($tag['name']);
@@ -20,24 +24,31 @@ $description = preg_replace('/\[gist\]([0-9a-z]+)\[\/gist\]/', '', substr(strip_
 $this->headTitle($data['title']);
 $this->headMeta()->appendName('keywords', implode(', ', $tags));
 $this->headMeta()->appendName('description', $description);
-
-//$right_title = sprintf("By <a href=\"%s\">%s</a>, %s", $this->url('home'), $data['user']['fullname'], $formatedDate);
+$this->headLink(array(
+    'rel' => 'canonical',
+    'href' => $url
+));
+$this->headLink(array(
+    'rel' => 'shortlink',
+    'href' => $shortUrl
+));
 ?>
 
-<div class="content single-view">
+<div class="content single-view" itemscope itemtype="http://schema.org/Article">
     <div class="single-view-header">
         <h1 id="content-title">
-            <a href="<?php echo $this->serverUrl() . $url; ?>"> <?php echo $data['title']; ?> </a>
+            <a itemprop="url" href="<?php echo $url; ?>"><span itemprop="name"> <?php echo $data['title']; ?> </span></a>
         </h1>
-        <p> <?php echo $formatedDate; ?> </p>
+        <p>
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name"><?php echo $data['user']['fullname']; ?></span></span>, 
+            <span itemprop="datePublished" content="<?php echo $date->format('Y-m-d H:i'); ?>"> <?php echo $formatedDate; ?> </span>
+        </p>
     </div>
     
     <div class="single-view-content">
         <?php echo $this->gistParser($data['content']); ?>
         <p>
-            <a href="<?php echo $this->url('article_shortcut', array('id' => $data['shortcut'])); ?>" 
-               class="btn btn-info btn-sm"><i class="icon-share"></i> Article Shortcut
-            </a>
+            <a href="<?php echo $shortUrl; ?>" class="btn btn-info btn-sm"><i class="icon-share"></i> Article Shortcut </a>
         </p>
     </div>
     

@@ -13,7 +13,7 @@
                             'month' => $date->format('m'),
                             'day'   => $date->format('d'),
                             'slug'  => $article['slug']
-                        ));
+                        ), array('force_canonical' => true));
                     ?>
                     <tr>
                         <td class="list-title"><a href="<?php echo $url; ?>" rel="follow"><?php echo $article['title']; ?></a></td>
@@ -25,7 +25,7 @@
                 <?php else :?>
                 <tr>
                     <td class="list-note" colspan="2">
-                        <a class="pull-right btn btn-sm btn-info" href="<?php echo $this->url('article_archive');?>" rel="follow">Archive <i class="icon-arrow-right"></i></a>
+                        <a class="pull-right btn btn-sm btn-info" href="<?php echo $this->url('article_archive', array(), array('force_canonical' => true));?>" rel="follow">Archive <i class="icon-arrow-right"></i></a>
                     </td>
                 </tr>
                 <?php endif; ?>

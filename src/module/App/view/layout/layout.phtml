@@ -7,24 +7,33 @@
         $this->headMeta()->appendName('author', 'Sarjono Mukti Aji');
         $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
         $this->headMeta()->prependName('keywords', 'sarjono mukti aji, simukti');
+        $this->headMeta()->appendName('robots', 'all');
         $this->headLink(array('rel'  => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 
                               'href' => $this->basePath() . '/assets/img/favicon.ico'));
         
         if($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME) {
-            $this->headLink()->prependStylesheet('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.no-icons.min.css'); 
-            $this->headLink()->appendStylesheet('//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css'); 
+            $this->headLink()->prependStylesheet('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css'); 
+            $this->headLink()->appendStylesheet('//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css'); 
         } else {
             $this->headLink()->prependStylesheet($this->basePath() . '/assets/css/bootstrap.css'); 
             $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/font-awesome.min.css'); 
         }
         
-        $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/app.css'); 
-        $this->headStyle()->appendStyle($this->basePath() . '/assets/css/font-awesome-ie7.min.css', array('conditional' => 'lt IE 7'));
+        $this->headStyle()->appendStyle('//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome-ie7.min.css', array('conditional' => 'lt IE 7'));
+        
+        $this->headLink()->appendStylesheet($this->basePath() . '/assets/css/app.css?v=201309271645'); 
+        
+        $this->headLink(array(
+            'rel'  => 'alternate',
+            'type' => 'application/rss+xml',
+            'title' => 'Sarjono Mukti Aji\'s Article Feeds',
+            'href' => $this->url('misc-rss', array(), array('force_canonical' => true))
+        ));
         
         echo $this->headTitle();
         echo $this->headMeta();
-        echo $this->headLink();
         echo $this->headStyle();
+        echo $this->headLink();
         echo $this->googleAnalytics();
     ?>
   </head>
@@ -37,7 +46,7 @@
         <div class="col-lg-8 col-lg-offset-2 col-md-12 col-xs-12">
         
         <div class="page-header">
-            <h1><a href="<?php echo $this->url('home'); ?>">Sarjono Mukti Aji</a></h1>
+            <h1><a href="<?php echo $this->url('home', array(), array('force_canonical' => true)); ?>">Sarjono Mukti Aji</a></h1>
             <p class="lead">
             views &middot; technical notes &middot; playground
             </p>
@@ -50,7 +59,7 @@
                 <div class="footer">
                     <p class="copyright">
                         <?php $current = date('Y'); $year = ($current == 2009) ? $current : sprintf("2009 - %s", $current); ?>
-                            Copyright &copy; <?php echo  $year; ?> &middot; <a href="<?php echo $this->url('home'); ?>">Sarjono Mukti Aji</a>. 
+                            Copyright &copy; <?php echo  $year; ?> &middot; <a href="<?php echo $this->url('home', array(), array('force_canonical' => true)); ?>">Sarjono Mukti Aji</a>. 
                             Powered by <a href="http://framework.zend.com/" target="_blank">ZendFramework v<?php echo \Zend\Version\Version::VERSION; ?></a>.
                         <br />
                         <?php echo $this->render('layout/_internal_pages'); ?>

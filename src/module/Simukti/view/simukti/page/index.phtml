@@ -6,10 +6,12 @@ if($this->tags) {
     }
     $this->headMeta(implode(', ', $tags), 'keywords');
 }
-$msg = 'I\'m Sarjono Mukti Aji, and this is my official site (and playground). 
-        Respecting Open Source, Open Mind, and Meritocracy, 
-        this site (in Indonesian / English) is about my views, technical notes, and my fun things.';
+$msg = 'I\'m Sarjono Mukti Aji, and this is my official site (and playground). Respecting Open Source, Open Mind, and Meritocracy,  this site (in Indonesian / English) is about my views, technical notes, and my fun things.';
 $this->headMeta($msg, 'description');
+$this->headLink(array(
+    'rel' => 'canonical',
+    'href' => $this->url('home', array(), array('force_canonical' => true))
+));
 ?>
 
 <div class="row">

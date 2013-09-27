@@ -18,7 +18,7 @@ $this->headTitle($title);
                 'articles'  => $archive['articles'],
                 'show_archive_button' => false,
                 'icon'      => 'icon-calendar'
-            )); ?>
+            ), array('force_canonical' => true)); ?>
         <?php endforeach; ?>
     
     <div class="single-view-header">
@@ -32,7 +32,7 @@ $this->headTitle($title);
             <?php foreach($this->tags['data'] as $tag) : ?>
                 <a class="btn btn-sm btn-info" href="<?php echo $this->url('article_tag', array(
                     'slug' => $tag['slug']
-                    ));?>" rel="follow"> <i class="icon-tags"></i> <?php echo sprintf("%s (%s)", $tag['name'], $tag['articleCount']); ?> 
+                    ), array('force_canonical' => true));?>" rel="follow"> <i class="icon-tags"></i> <?php echo sprintf("%s (%s)", $tag['name'], $tag['articleCount']); ?> 
                 </a>
             <?php endforeach;?>
         </p>
