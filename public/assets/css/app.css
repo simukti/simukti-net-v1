@@ -256,15 +256,15 @@ body, html {
 
 /* TYPO */
 body {
-    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
-    font-size: 14px;
+    font-family: 'Open Sans','Calibri',Geneva,Verdana,sans-serif;
+    font-size: 13px;
     font-weight: 400;
     line-height: 2em;
-    color: #555;
+    color: #666;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, b, strong {
-    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
+    font-family: 'Open Sans','Calibri',Geneva,Verdana,sans-serif;
     font-weight: 700;
 }
 
@@ -274,7 +274,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, b, strong {
 .fyre a.fyre-comment-username,
 .fyre .fyre-stream-stats, .fyre .fyre-stream-livecount,
 .goog-toolbar {
-    font-family: 'PT Sans','Segoe UI',Geneva,Verdana,sans-serif;
+    font-family: 'Open Sans','Calibri',Geneva,Verdana,sans-serif;
     font-size: 13px;
     font-weight: 400;
     line-height: 1.8em;

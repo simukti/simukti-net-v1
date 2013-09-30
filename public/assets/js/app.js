@@ -1,5 +1,6 @@
 WebFontConfig = {
-    google: { families: [ 'PT+Sans:400,700:latin' ] }
+    //google: { families: [ 'PT+Sans:400,700:latin' ] }
+    google: { families: [ 'Open+Sans:700,400,400italic:latin' ] }
 };
 (function() {
     var wf = document.createElement('script');
