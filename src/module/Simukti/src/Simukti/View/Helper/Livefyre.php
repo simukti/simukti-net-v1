@@ -47,17 +47,22 @@ class Livefyre extends AbstractHelper
     
     public function __invoke($url = '', $title = '', $siteId = false)
     {
+        $development = $this->development;
+        
+        if($development == 1) {
+            return;
+        }
+        
         if (! $siteId && ! $this->siteId) {
             throw new InvalidArgumentException('Livefyre siteId param was not found.');
         } elseif (! $siteId) {
             $siteId = $this->siteId;
         }
         
-        $development = $this->development;
-        
         if (! preg_match('#^(http|https)://#', $url)) {
             $url = $this->view->serverUrl() . $url;
         }
+        
         $livefyreTag    = '<div class="content-comment"><div id="livefyre-comments"></div></div>';
         $livefyreScript =<<<EOH
         (function () {
@@ -74,14 +79,10 @@ class Livefyre extends AbstractHelper
             }], function() {});
         }());
 EOH;
-        if( ($this->development == 0) && ($_SERVER['SERVER_NAME'] == SIMUKTI_NET) ) {
+        if( ($development == 0) && ($_SERVER['SERVER_NAME'] == SIMUKTI_NET) ) {
             $this->view->headScript()->appendFile($this->js);
             $this->view->inlineScript()->appendScript($livefyreScript);
             return $livefyreTag;
-        } 
-        
-        $this->view->headScript()->appendFile($this->js);
-            $this->view->inlineScript()->appendScript($livefyreScript);
-            return $livefyreTag;
+        }
     }
 }
