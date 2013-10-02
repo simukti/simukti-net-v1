@@ -63,41 +63,18 @@ class Disqus extends AbstractHelper
         if (! preg_match('#^(http|https)://#', $url)) {
             $url = $this->view->serverUrl() . $url;
         }
-        $disqusTag    = '<button class="btn btn-success btn-sm pull-right" id="comment-button" onclick=reset();>
-                         <i class="icon-comment"></i> Show Comments</button>
-                         <div class="post-comments"><div id="disqus_thread"></div></div>';
+        $disqusTag    = '<div class="post-comments"><h4>Comment(s)</h4><div id="disqus_thread"></div></div>';
         $disqusScript =<<<EOH
-        // from http://www.paulund.co.uk/ajax-disqus-comment-system
-        
-        var reset = function(){
-            DISQUS.reset({
-              reload: true,
-              config: function () {
-                this.page.identifier = '$identifier';
-                this.page.url = '$url';
-                this.page.title = '$title';
-              }
-            });
-        };
-        
-        \$j = jQuery.noConflict();
-        \$j(document).ready(function() {
-            \$j('#comment-button').on('click', function() {
-                \$j(this).remove();
-                var disqus_developer  = $development;
-                var disqus_shortname  = '$shortname';
-                var disqus_title      = '$title';
-                var disqus_identifier = '$identifier';
-                var disqus_url        = '$url';
-
-                \$j.ajax({
-                     type: 'GET',
-                     url: '//' + disqus_shortname + '.disqus.com/embed.js',
-                     dataType: 'script',
-                     cache: true
-                 });
-            });
-        });
+        var disqus_developer  = $development;
+        var disqus_shortname  = '$shortname';
+        var disqus_title      = '$title';
+        var disqus_identifier = '$identifier';
+        var disqus_url        = '$url';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
 EOH;
         if( ($this->development == 0) && ($_SERVER['SERVER_NAME'] !== DEV_SERVER_NAME) ) {
             $this->view->inlineScript()->appendScript($disqusScript);
