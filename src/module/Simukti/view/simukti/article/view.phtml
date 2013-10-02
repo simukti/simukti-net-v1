@@ -5,12 +5,14 @@ $data = $this->result['data'];
 $date = new \DateTime($data['createdAt']);
 $tempDate = $date->format('Y/m/d H:i');
 $formatedDate = $tempDate . ' GMT' . substr($date->format('O'), 0, 3) . ':00';
-$url = $this->url('article_view', array(
+$urlParams = array(
             'year'  => $date->format('Y'),
             'month' => $date->format('m'),
             'day'   => $date->format('d'),
             'slug'  => $data['slug']
-        ), array('force_canonical' => true));
+        );
+$url = $this->url('article_view', $urlParams, array('force_canonical' => true));
+$relativeUrl = $this->url('article_view', $urlParams);
 $shortUrl = $this->url('article_shortcut', array(
     'id' => $data['shortcut']
 ), array('force_canonical' => true));
@@ -53,7 +55,7 @@ $this->headLink(array(
     </div>
     
     <div class="single-view-footer">
-        <?php echo $this->livefyre($url, $data['title']); ?>
+        <?php echo $this->disqus($relativeUrl, $url, $data['title']); ?>
         <?php echo $this->articleRecent(); ?>
     </div>
 </div>
