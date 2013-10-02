@@ -63,11 +63,22 @@ class Disqus extends AbstractHelper
         if (! preg_match('#^(http|https)://#', $url)) {
             $url = $this->view->serverUrl() . $url;
         }
-        $disqusTag    = '<button class="btn btn-success btn-sm pull-right" id="comment-button">
+        $disqusTag    = '<button class="btn btn-success btn-sm pull-right" id="comment-button" onclick=reset();>
                          <i class="icon-comment"></i> Show Comments</button>
                          <div class="post-comments"><div id="disqus_thread"></div></div>';
         $disqusScript =<<<EOH
         // from http://www.paulund.co.uk/ajax-disqus-comment-system
+        
+        var reset = function(){
+            DISQUS.reset({
+              reload: true,
+              config: function () {
+                this.page.identifier = '$identifier';
+                this.page.url = '$url';
+                this.page.title = '$title';
+              }
+            });
+        };
         
         \$j = jQuery.noConflict();
         \$j(document).ready(function() {
